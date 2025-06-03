@@ -1,5 +1,8 @@
 package model;
 
+import lombok.Data;
+
+@Data
 public class Usuario {
 
 	private Integer idUser;
@@ -7,11 +10,10 @@ public class Usuario {
 	private String email;
 	private String senha;
 
-	public Usuario(){
-		
+	public Usuario() {
+
 	}
-	
-	
+
 	public Usuario(Integer id, String nome, String email, String senha) {
 		this.idUser = id;
 		this.nome = nome;

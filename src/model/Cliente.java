@@ -1,5 +1,10 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Cliente extends Usuario {
 
 	private String cpf;
@@ -21,22 +26,6 @@ public class Cliente extends Usuario {
 		this.telefone = telefone;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
 	public void consultaProduto(Produto p) {
 		System.out.println(p.getPrecoUnitario());
 
@@ -46,7 +35,5 @@ public class Cliente extends Usuario {
 	public String toString() {
 		return "Cliente [cpf=" + cpf + ", telefone=" + telefone + "]";
 	}
-	
-	
 
 }
