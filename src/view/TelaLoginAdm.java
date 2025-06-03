@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class TelaLogin extends JFrame{
+public class TelaLoginAdm extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +17,7 @@ public class TelaLogin extends JFrame{
     private JPasswordField campoSenha;
     private JButton botaoConfirmar;
 	
-    public TelaLogin(Usuario u) {
+    public TelaLoginAdm(Usuario u) {
         setTitle("Login");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
