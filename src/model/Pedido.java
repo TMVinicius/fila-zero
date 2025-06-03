@@ -1,8 +1,8 @@
 package model;
 
-import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pedido {
 
@@ -10,14 +10,11 @@ public class Pedido {
 	private Double valorTotal;
 	private LocalDateTime dataCompra;
 	private Cliente cliente;
-	private List<Produto> itens = new ArrayList<Produto>();
+	private List<ItemPedido> itens = new ArrayList<>();
 
-	public Pedido(){
-		
-	}
-	
-	public Pedido(Integer idPedido, Double valorTotal, LocalDateTime dataCompra, Cliente cliente, List<Produto> itens) {
-		super();
+	public Pedido() {}
+
+	public Pedido(Integer idPedido, Double valorTotal, LocalDateTime dataCompra, Cliente cliente, List<ItemPedido> itens) {
 		this.idPedido = idPedido;
 		this.valorTotal = valorTotal;
 		this.dataCompra = dataCompra;
@@ -26,19 +23,9 @@ public class Pedido {
 	}
 
 	public Pedido(Integer idPedido, Double valorTotal, LocalDateTime dataCompra, Cliente cliente) {
-		super();
 		this.idPedido = idPedido;
 		this.valorTotal = valorTotal;
 		this.dataCompra = dataCompra;
-		this.cliente = cliente;
-	}
-
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
@@ -58,14 +45,6 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 	}
 
-	public List<Produto> getItens() {
-		return itens;
-	}
-
-	public void setItens(List<Produto> itens) {
-		this.itens = itens;
-	}
-
 	public LocalDateTime getDataCompra() {
 		return dataCompra;
 	}
@@ -74,4 +53,19 @@ public class Pedido {
 		this.dataCompra = dataCompra;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemPedido> itens) {
+		this.itens = itens;
+	}
 }
