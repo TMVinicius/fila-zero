@@ -1,10 +1,11 @@
-package view;
+package view.login;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import model.Cliente;
 import repo.ClienteRepo;
+import view.cliente.TelaEscolherEstabelecimento;
 
 public class TelaLoginCliente extends JFrame {
 
@@ -49,7 +50,8 @@ public class TelaLoginCliente extends JFrame {
 
 			if (cliente != null) {
 				JOptionPane.showMessageDialog(null, "Login realizado! Bem-vindo, " + cliente.getNome());
-				// Tela do sistema
+				dispose(); 
+				new TelaEscolherEstabelecimento(cliente).setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(null, "CPF ou senha inválidos.");
 			}

@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import model.Estabelecimento;
+import view.cadastro.TelaCadastroProduto;
+
 import java.awt.*;
 
 public class TelaPrincipalEstabelecimento extends JFrame {

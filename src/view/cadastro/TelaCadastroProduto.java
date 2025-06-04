@@ -1,10 +1,11 @@
-package view;
+package view.cadastro;
 
 import javax.swing.*;
 import java.awt.*;
 import model.Produto;
 import model.Estabelecimento;
 import repo.ProdutoRepo;
+import view.TelaPrincipalEstabelecimento;
 
 public class TelaCadastroProduto extends JFrame {
 
@@ -46,7 +47,7 @@ public class TelaCadastroProduto extends JFrame {
         botaoSalvar.addActionListener(e -> {
             try {
                 String nome = campoNome.getText();
-                Integer codigo = Integer.parseInt(campoCodigoBarras.getText());
+                String codigo = campoCodigoBarras.getText();
                 Double preco = Double.parseDouble(campoPreco.getText());
                 Integer quantidade = Integer.parseInt(campoQuantidade.getText());
                 

@@ -1,8 +1,10 @@
-package view;
+package view.cadastro;
 
 import javax.swing.*;
 import model.Cliente;
 import repo.ClienteRepo;
+import view.login.TelaLoginCliente;
+
 import javax.swing.text.MaskFormatter;
 import javax.swing.JFormattedTextField;
 import java.awt.*;

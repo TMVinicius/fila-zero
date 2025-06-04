@@ -1,6 +1,9 @@
-package view;
+package view.login;
 
 import javax.swing.*;
+
+import view.cadastro.TelaCadastroCliente;
+
 import java.awt.*;
 import java.awt.event.*;
 
