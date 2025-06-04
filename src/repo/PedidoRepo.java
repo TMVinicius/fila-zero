@@ -4,6 +4,7 @@ import model.Pedido;
 import model.ItemPedido;
 import model.Produto;
 import model.Cliente;
+import model.Estabelecimento;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,8 +75,6 @@ public class PedidoRepo {
 
         return pedidos;
     }
-
-    // Método auxiliar
     private List<ItemPedido> buscarItensDoPedido(int idPedido, Connection conn) throws SQLException {
         List<ItemPedido> itens = new ArrayList<>();
         String sql = """
@@ -93,7 +92,7 @@ public class PedidoRepo {
                 Produto produto = new Produto(
                     rs.getInt("idProduto"),
                     rs.getString("nomeProduto"),
-                    rs.getInt("codigoDeBarras"),
+                    rs.getString("codigoDeBarras"),
                     rs.getDouble("precoUnitario")
                 );
 
@@ -104,5 +103,46 @@ public class PedidoRepo {
         }
 
         return itens;
+        
     }
+    
+    public List<Pedido> buscarPorEstabelecimento(Estabelecimento est) {
+        List<Pedido> pedidos = new ArrayList<>();
+        String sql = """
+            SELECT DISTINCT p.id AS idPedido, p.valorTotal, p.dataCompra, c.id AS idCliente, c.nome
+            FROM pedido p
+            JOIN item_pedido ip ON ip.idPedido = p.id
+            JOIN produto pr ON ip.idProduto = pr.id
+            JOIN cliente c ON p.idCliente = c.id
+            WHERE pr.idEstabelecimento = ?
+            ORDER BY p.dataCompra DESC
+        """;
+
+        try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, est.getId());
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(rs.getInt("idPedido"));
+                pedido.setValorTotal(rs.getDouble("valorTotal"));
+                pedido.setDataCompra(rs.getTimestamp("dataCompra").toLocalDateTime());
+
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("idCliente"));
+                cliente.setNome(rs.getString("nome"));
+                pedido.setCliente(cliente);
+
+                List<ItemPedido> itens = buscarItensDoPedido(pedido.getIdPedido(), conn);
+                pedido.setItens(itens);
+
+                pedidos.add(pedido);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pedidos;
+    }
+
 }

@@ -9,7 +9,7 @@ public class Produto {
 
 	private Integer idProduto;
 	private String nomeProduto;
-	private Integer codigoDeBarras;
+	private String codigoDeBarras;
 	private Double precoUnitario;
 	private Integer Quantidade;
 	private Estabelecimento estabelecimento;
@@ -17,14 +17,14 @@ public class Produto {
 	public Produto() {
 	}
 
-	public Produto(Integer idProduto, String nomeProduto, Integer codigoDeBarras, Double precoUnitario) {
+	public Produto(Integer idProduto, String nomeProduto, String codigoDeBarras, Double precoUnitario) {
 		this.idProduto = idProduto;
 		this.nomeProduto = nomeProduto;
 		this.codigoDeBarras = codigoDeBarras;
 		this.precoUnitario = precoUnitario;
 	}
 
-	public Produto(String nomeProduto, Integer codigoDeBarras, Double precoUnitario, Estabelecimento estabelecimento) {
+	public Produto(String nomeProduto, String codigoDeBarras, Double precoUnitario, Estabelecimento estabelecimento) {
 		
 		this.nomeProduto = nomeProduto;
 		this.codigoDeBarras = codigoDeBarras;
@@ -32,7 +32,7 @@ public class Produto {
 		this.estabelecimento = estabelecimento;
 	}
 
-	public Produto(String nomeProduto, Integer codigoDeBarras, Double precoUnitario, Integer quantidade,
+	public Produto(String nomeProduto, String codigoDeBarras, Double precoUnitario, Integer quantidade,
 			Estabelecimento estabelecimento) {
 		this.nomeProduto = nomeProduto;
 		this.codigoDeBarras = codigoDeBarras;

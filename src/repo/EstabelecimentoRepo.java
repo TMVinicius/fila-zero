@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EstabelecimentoRepo {
 
@@ -49,4 +51,27 @@ public class EstabelecimentoRepo {
 
         return estabelecimento;
     }
+    
+    public List<Estabelecimento> listarTodos() {
+        List<Estabelecimento> lista = new ArrayList<>();
+        String sql = "SELECT * FROM estabelecimento";
+
+        try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Estabelecimento est = new Estabelecimento();
+                est.setId(rs.getInt("id"));
+                est.setNome(rs.getString("nome"));
+                est.setCnpj(rs.getString("cnpj"));
+                lista.add(est);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
+    
 }
