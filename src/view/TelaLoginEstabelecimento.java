@@ -1,46 +1,60 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+import model.Estabelecimento;
+import repo.EstabelecimentoRepo;
 import java.awt.*;
 import java.awt.event.*;
 
 public class TelaLoginEstabelecimento extends JFrame {
 
-    private JTextField campoCnpj;
-    private JPasswordField campoSenha;
+	private JTextField campoCnpj;
+	private JPasswordField campoSenha;
 
-    public TelaLoginEstabelecimento() {
-        setTitle("Login Estabelecimento");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+	public TelaLoginEstabelecimento() {
+		setTitle("Login Estabelecimento");
+		setSize(300, 200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 
-        JPanel painel = new JPanel(new GridLayout(3, 2, 10, 10));
-        painel.add(new JLabel("CNPJ:"));
-        campoCnpj = new JTextField();
-        painel.add(campoCnpj);
+		MaskFormatter mascaraCnpj = null;
+		try {
+			mascaraCnpj = new MaskFormatter("##.###.###/####-##");
+			mascaraCnpj.setPlaceholderCharacter('_');
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-        painel.add(new JLabel("Senha:"));
-        campoSenha = new JPasswordField();
-        painel.add(campoSenha);
+		JPanel painel = new JPanel(new GridLayout(3, 2, 10, 10));
+		painel.add(new JLabel("CNPJ:"));
+		campoCnpj = new JFormattedTextField(mascaraCnpj);
+		painel.add(campoCnpj);
 
-        JButton botaoLogin = new JButton("Entrar");
-        painel.add(new JLabel());
-        painel.add(botaoLogin);
+		painel.add(new JLabel("Senha:"));
+		campoSenha = new JPasswordField();
+		painel.add(campoSenha);
 
-        add(painel);
+		JButton botaoLogin = new JButton("Entrar");
+		painel.add(new JLabel());
+		painel.add(botaoLogin);
 
-        botaoLogin.addActionListener(e -> {
-            String cnpj = campoCnpj.getText();
-            String senha = new String(campoSenha.getPassword());
+		add(painel);
 
-            // Lógica de validação simples (mock)
-            if (cnpj.equals("12345678000199") && senha.equals("estab123")) {
-                JOptionPane.showMessageDialog(null, "Login do Estabelecimento realizado!");
-                // Abrir tela principal do estabelecimento...
-            } else {
-                JOptionPane.showMessageDialog(null, "CNPJ ou senha inválidos.");
-            }
-        });
-    }
+		botaoLogin.addActionListener(e -> {
+			String cnpj = campoCnpj.getText();
+			String senha = new String(campoSenha.getPassword());
+
+			EstabelecimentoRepo repo = new EstabelecimentoRepo();
+			Estabelecimento est = repo.buscarCnpjSenha(cnpj, senha);
+
+			if (est != null) {
+				JOptionPane.showMessageDialog(null, "Login realizado! Bem-vindo, " + est.getNome());
+			    new TelaPrincipalEstabelecimento(est).setVisible(true);
+			    dispose();
+			} else {
+				JOptionPane.showMessageDialog(null, "CNPJ ou senha inválidos.");
+			}
+		});
+	}
 }
