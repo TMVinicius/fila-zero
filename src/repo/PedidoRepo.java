@@ -19,7 +19,7 @@ public class PedidoRepo {
         try (Connection conn = Conexao.conectar()) {
             conn.setAutoCommit(false);
 
-            // 1. Inserir pedido
+            
             PreparedStatement stmtPedido = conn.prepareStatement(sqlPedido, Statement.RETURN_GENERATED_KEYS);
             stmtPedido.setDouble(1, pedido.getValorTotal());
             stmtPedido.setTimestamp(2, Timestamp.valueOf(pedido.getDataCompra()));
@@ -32,7 +32,7 @@ public class PedidoRepo {
                 int idPedidoGerado = generatedKeys.getInt(1);
                 pedido.setIdPedido(idPedidoGerado);
 
-                // 2. Inserir itens
+                
                 PreparedStatement stmtItem = conn.prepareStatement(sqlItens);
                 for (ItemPedido item : pedido.getItens()) {
                     stmtItem.setInt(1, idPedidoGerado);
