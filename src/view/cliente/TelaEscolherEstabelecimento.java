@@ -15,7 +15,7 @@ public class TelaEscolherEstabelecimento extends JFrame {
     public TelaEscolherEstabelecimento(Cliente cliente) {
         this.cliente = cliente;
 
-        setTitle("Escolher Estabelecimento");
+        setTitle("Escolha o Estabelecimento");
         setSize(400, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

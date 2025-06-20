@@ -1,11 +1,20 @@
 package view.login;
 
-import javax.swing.*;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
-import java.awt.*;
+
 import model.Cliente;
 import repo.ClienteRepo;
-import view.cliente.TelaEscolherEstabelecimento;
+import view.cliente.TelaClienteMenu;
 
 public class TelaLoginCliente extends JFrame {
 
@@ -51,7 +60,7 @@ public class TelaLoginCliente extends JFrame {
 			if (cliente != null) {
 				JOptionPane.showMessageDialog(null, "Login realizado! Bem-vindo, " + cliente.getNome());
 				dispose(); 
-				new TelaEscolherEstabelecimento(cliente).setVisible(true);
+				new TelaClienteMenu(cliente).setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(null, "CPF ou senha inválidos.");
 			}

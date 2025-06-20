@@ -93,7 +93,9 @@ public class TelaBuscarProduto extends JFrame {
 				repo.salvar(pedidoAtual);
 
 				JOptionPane.showMessageDialog(this, "Pedido finalizado com sucesso!");
-
+				
+				new TelaPagamento(pedidoAtual);
+				
 				pedidoAtual = new Pedido(cliente, estabelecimento);
 			}
 		});

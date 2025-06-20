@@ -15,9 +15,6 @@ public class App {
 			new TelaInicialLogin().setVisible(true);
 		});
 		
-		Estabelecimento est = new Estabelecimento("Araujo", "luis@araujo.com","1234", "11.345.678/0001-90");
-		EstabelecimentoRepo repo = new EstabelecimentoRepo();
-		repo.salvar(est);
 		
 
 	}
