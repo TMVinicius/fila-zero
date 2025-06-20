@@ -1,6 +1,8 @@
 package repo;
 
 import model.Produto;
+import utils.Conexao;
+
 import java.sql.*;
 
 public class ProdutoRepo {

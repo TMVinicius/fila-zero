@@ -1,42 +1,49 @@
 package view.cliente;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import model.ItemPedido;
 import model.Pedido;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class TelaPagamento extends JFrame {
 
-    public TelaPagamento(Pedido pedidoFinalizado) {
-        setTitle("Pagamento");
-        setSize(400, 300);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	private static final long serialVersionUID = 1L;
 
-        JTextArea txtResumo = new JTextArea();
-        txtResumo.setEditable(false);
+	public TelaPagamento(Pedido pedidoFinalizado) {
+		setTitle("Pagamento");
+		setSize(400, 300);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        StringBuilder resumo = new StringBuilder("Resumo do Pedido:\n\n");
-        for (ItemPedido item : pedidoFinalizado.getItens()) {
-            resumo.append("Produto: ").append(item.getNomeProduto())
-                  .append(" | Quantidade: ").append(item.getQuantidade())
-                  .append("\n");
-        }
+		JTextArea txtResumo = new JTextArea();
+		txtResumo.setEditable(false);
 
-        txtResumo.setText(resumo.toString());
+		StringBuilder resumo = new StringBuilder("Resumo do Pedido:\n\n");
+		for (ItemPedido item : pedidoFinalizado.getItens()) {
+			resumo.append("Produto: ").append(item.getNomeProduto()).append(" | Quantidade: ")
+					.append(item.getQuantidade()).append("\n");
+		}
 
-        JButton btnPagar = new JButton("Pagar");
-        btnPagar.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Pedido pago com sucesso!");
-            this.dispose(); 
-        });
+		txtResumo.setText(resumo.toString());
 
-        JPanel painel = new JPanel(new BorderLayout());
-        painel.add(new JScrollPane(txtResumo), BorderLayout.CENTER);
-        painel.add(btnPagar, BorderLayout.SOUTH);
+		JButton btnPagar = new JButton("Pagar");
+		btnPagar.addActionListener(e -> {
+			JOptionPane.showMessageDialog(this, "Pedido pago com sucesso!");
+			this.dispose();
+		});
 
-        add(painel);
-        setVisible(true);
-    }
+		JPanel painel = new JPanel(new BorderLayout());
+		painel.add(new JScrollPane(txtResumo), BorderLayout.CENTER);
+		painel.add(btnPagar, BorderLayout.SOUTH);
+
+		add(painel);
+		setVisible(true);
+	}
 }

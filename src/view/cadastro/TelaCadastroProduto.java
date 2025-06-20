@@ -1,15 +1,23 @@
 package view.cadastro;
 
-import javax.swing.*;
-import java.awt.*;
-import model.Produto;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import model.Estabelecimento;
+import model.Produto;
 import repo.ProdutoRepo;
 import view.TelaPrincipalEstabelecimento;
 
 public class TelaCadastroProduto extends JFrame {
 
-    private JTextField campoNome, campoCodigoBarras, campoPreco, campoQuantidade;
+    private static final long serialVersionUID = 1L;
+	private JTextField campoNome, campoCodigoBarras, campoPreco, campoQuantidade;
     private Estabelecimento estabelecimento;
 
     public TelaCadastroProduto(Estabelecimento est) {

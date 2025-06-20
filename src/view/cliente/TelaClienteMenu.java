@@ -1,13 +1,16 @@
 package view.cliente;
 
-import model.Cliente;
-import model.Estabelecimento;
+import java.awt.GridLayout;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import model.Cliente;
 
 public class TelaClienteMenu extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private Cliente cliente;
 
 	public TelaClienteMenu(Cliente cliente) {
@@ -23,7 +26,6 @@ public class TelaClienteMenu extends JFrame {
 
 		btnEscolherEstabelecimento.addActionListener(e -> {
 			new TelaEscolherEstabelecimento(cliente).setVisible(true);
-			dispose();
 		});
 
 		btnVerPedidos.addActionListener(e -> {

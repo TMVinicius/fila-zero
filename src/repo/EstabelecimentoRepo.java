@@ -1,6 +1,7 @@
 package repo;
 
 import model.Estabelecimento;
+import utils.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

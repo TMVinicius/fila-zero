@@ -1,5 +1,15 @@
 package view.cliente;
 
+import java.time.LocalDateTime;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import model.Cliente;
 import model.Estabelecimento;
 import model.ItemPedido;
@@ -8,12 +18,9 @@ import model.Produto;
 import repo.PedidoRepo;
 import repo.ProdutoRepo;
 
-import javax.swing.*;
-import java.awt.*;
-import java.time.LocalDateTime;
-
 public class TelaBuscarProduto extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private Cliente cliente;
 	private Estabelecimento estabelecimento;
 	private Pedido pedidoAtual;
@@ -93,9 +100,9 @@ public class TelaBuscarProduto extends JFrame {
 				repo.salvar(pedidoAtual);
 
 				JOptionPane.showMessageDialog(this, "Pedido finalizado com sucesso!");
-				
+
 				new TelaPagamento(pedidoAtual);
-				
+
 				pedidoAtual = new Pedido(cliente, estabelecimento);
 			}
 		});

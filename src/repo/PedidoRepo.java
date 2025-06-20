@@ -4,6 +4,7 @@ package repo;
 import model.Pedido;
 import model.ItemPedido;
 import model.Produto;
+import utils.Conexao;
 import model.Cliente;
 import model.Estabelecimento;
 import java.sql.*;

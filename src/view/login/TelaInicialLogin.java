@@ -1,13 +1,17 @@
 package view.login;
 
-import javax.swing.*;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import view.cadastro.TelaCadastroCliente;
 
-import java.awt.*;
-import java.awt.event.*;
-
 public class TelaInicialLogin extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	public TelaInicialLogin() {
 		setTitle("FILA ZERO - Escolha de Login");

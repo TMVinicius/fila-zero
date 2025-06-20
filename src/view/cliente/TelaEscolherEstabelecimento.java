@@ -1,16 +1,24 @@
 package view.cliente;
 
-import model.Estabelecimento;
-import model.Cliente;
-import repo.EstabelecimentoRepo;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.util.List;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import model.Cliente;
+import model.Estabelecimento;
+import repo.EstabelecimentoRepo;
 
 public class TelaEscolherEstabelecimento extends JFrame {
 
-    private Cliente cliente;
+    private static final long serialVersionUID = 1L;
+	private Cliente cliente;
 
     public TelaEscolherEstabelecimento(Cliente cliente) {
         this.cliente = cliente;

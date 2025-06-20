@@ -18,6 +18,7 @@ import view.cliente.TelaClienteMenu;
 
 public class TelaLoginCliente extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JTextField campoCpf;
 	private JPasswordField campoSenha;
 
@@ -59,7 +60,7 @@ public class TelaLoginCliente extends JFrame {
 
 			if (cliente != null) {
 				JOptionPane.showMessageDialog(null, "Login realizado! Bem-vindo, " + cliente.getNome());
-				dispose(); 
+				dispose();
 				new TelaClienteMenu(cliente).setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(null, "CPF ou senha inválidos.");

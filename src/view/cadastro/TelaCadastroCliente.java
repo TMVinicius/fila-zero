@@ -1,17 +1,24 @@
 package view.cadastro;
 
-import javax.swing.*;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+
 import model.Cliente;
 import repo.ClienteRepo;
 import view.login.TelaLoginCliente;
 
-import javax.swing.text.MaskFormatter;
-import javax.swing.JFormattedTextField;
-import java.awt.*;
-import java.awt.event.*;
-
 public class TelaCadastroCliente extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JTextField campoNome, campoCpf, campoTelefone, campoEmail;
 	private JPasswordField campoSenha;
 

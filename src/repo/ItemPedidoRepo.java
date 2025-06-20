@@ -9,6 +9,7 @@ import java.util.List;
 
 import model.ItemPedido;
 import model.Produto;
+import utils.Conexao;
 
 public class ItemPedidoRepo {
 	
